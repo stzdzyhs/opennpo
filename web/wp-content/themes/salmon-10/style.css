@@ -1,0 +1,262 @@
+/*  
+Theme Name: Salmon
+Theme URI: http://justinshattuck.com/salmon/
+Description: A soft and clean salmon and blue colored theme.
+Version: 1.0
+Author: Justin Shattuck
+Author URI: http://justinshattuck.com
+
+	Information about the theme and its components here
+
+*/
+
+body { margin: 0; padding: 0; background: #003549 url(./images/bkg_body.jpg) repeat-x; font-family: 'Verdana'; color: #777; font-size: 12px;}
+
+/* General Links */
+a:link { text-decoration : none; color : #e1f15d; border: 0px;} 
+a:active { text-decoration : underline; color : #e1f15d; border: 0px;} 
+a:visited { text-decoration : none; color : #e1f15d; border: 0px;} 
+a:hover { text-decoration : underline; color : #cc6666; border: 0px;} 
+
+
+img { padding: 0px; margin: 0px; border: none;}
+hr { border-left:0px solid #abb0b5; border-right:0px solid #abb0b5; border-top:1px dotted #abb0b5; border-bottom:0px solid #abb0b5; height : 1px;  }
+
+input { font-family: 'Verdana'; color: #6a5555; font-size: 10px; }
+textarea { font-family: 'Verdana'; color: #6a5555; font-size: 10px;  }
+select { font-family: 'Verdana'; color: #6a5555; font-size: 10px;  }
+
+h1, h2, h3 { font-family: 'Helvetica';}
+
+#bgcontain { width: 900px; padding: 0px; margin: 0 auto; } 
+
+.Header { margin-top: 31px; position: relative; clear: left; width: 900px; margin: 0 auto; margin-top: 31px;}
+.Header h1 { margin: 0; padding-top: 40px; color: #FFF;}
+.Header h1 a { width: 250px; height: 90px; cursor: hand; float: left; text-decoration: none;}
+.Header h1 a:hover { text-decoration: none; color: #FFF;}
+.Header h3 { margin: 0; padding-top: 5px; color: #FFF; float: left; }
+
+.Header .TopHeader { position: absolute; top: -25px; left: 0px; color:#86aab2; font-size: 11px;}
+.Header .TopHeader a { background: url(./images/top_ico.gif) no-repeat left center; color:#86aab2; padding-left: 15px;}
+
+.Header .Search { position: absolute; top: -1px; right: 0px; background: url(./images/bkg_search.png) no-repeat left top; width: 291px; color:#000; height: 92px;}
+.Header .Search fieldset { border: none; padding: 0px; margin: 0px;}
+.Header .Search legend { text-indent: -5000px; margin: 0; padding: 0;}
+.Header .Search form { padding: 25px 0px 0px 20px; margin: 0px 0px 0px 0px;}
+.Header .Search input { color: #666; font-size: 12px;}
+.Header .Search input.search { width: 32px; height: 29px; background: url(./images/SearchButton.png) no-repeat;}
+.Header .Search input.search:hover { background: url(./images/SearchButton.png) no-repeat 0 -29px; }
+.Header .Search input.searchIE { width: 32px; height: 29px; background: url(./images/SearchButton.png) no-repeat 0 -29px; }
+.Header .Search input.keyword { border: none; background: #fff url(./images/SearchKeyword.png) no-repeat; padding: 7px 0px 7px 10px; width: 237px; border: none; } 
+
+/*\ IE/Win min height hack */ * html #buttonsearch { margin: -29px 0px 0px 216px; } /* */ 
+#buttonsearch { padding: 0px; margin: -28px 0px 0px 216px; top: 0px; background: none; }
+
+
+.Header .SubRss { position: absolute; top: 128px; right: 0px; background: url(./images/bkg_rss.gif) no-repeat left top; width: 291px; color:#fff; height: 37px}
+.Header .SubRss ul em { display: none}
+.Header .SubRss ul { margin: 0px; padding: 9px 8px 9px 8px;}
+.Header .SubRss ul li { padding: 0px; margin: 0px; display: inline; list-style-type: none;}
+.Header .SubRss ul li a { DISPLAY: block; HEIGHT: 29px }
+.Header .SubRss ul li a.subscribe{ background: url(./images/SubRssButton.png) no-repeat left bottom; }
+.Header .SubRss ul li a:hover { background-position: left top; }
+
+.MainMenu { position: absolute; top: 130px; left: 0px; }
+.MainMenu ul { padding: 0px; margin: 0px; }
+.MainMenu li { padding: 0px; margin: 0px; display: inline; font-size: 11px;}
+.MainMenu a { padding: 0px 0px 0px 12px; margin-left: 1px; background: url(./images/MainMenuLeft.png) no-repeat left top; float: left;}
+.MainMenu a span { padding: 10px 15px 11px 4px; display: block; background: url(./images/MainMenuRight.png) no-repeat right top; float: left; }
+.MainMenu a span { float: none; color: #fff;}
+.MainMenu a:hover span { color: #3d474e;}
+.MainMenu a:hover { background-position: 0% -34px; color: #fff; text-decoration: none;}
+.MainMenu a:hover span { background-position: 100% -34px; color: #fff;}
+
+* html .container { height: 450px;} 
+.container { width: 900px; min-height: 450px; float: left; margin-bottom: 15px; margin-top: 34px; }
+
+/* Central Column */
+.SC { float: left; width: 588px; color: #ffeadd;}
+
+.DateHeader { background: #f0f0f0; margin-bottom: 20px; margin-top: 20px;}
+.DateHeader p { background:url(./images/DateHeaderIco.png) no-repeat left center; padding: 5px 0px 5px 20px; margin: 0px 0px 0px 10px; font-size: 18px; font-family: 'Helvetica'; }
+
+.Post {	padding: 0px; position: relative; clear: left; width: 588px; margin-bottom: 30px; margin-top: 30px;}
+.Post h1 { font-size: 25px; letter-spacing: -1px; font-weight: normal; font-family: 'Helvetica'; padding: 2px 0px; margin: 0px; display: block; text-transform: uppercase;}
+.Post h1 a { color: #e1f15d; text-decoration: none;}
+.Post h1 a:visited { color: #e1f15d; text-decoration: none;}
+.Post h1 a:hover { color: #ff9999; text-decoration: none;}
+
+.PostHeadSimple {}
+.PostHead { padding-left: 55px; }
+
+.PostInfo { padding: 2px 0px; margin-left: 55px; font-size: 9px; color: #7fa1a9; border-top: dashed 1px #637f89; }
+.PostInfo ul { padding: 0px; margin: 0px;}
+.PostInfo li { padding: 0px; margin: 0px; list-style-type: none; display: inline;}
+.PostInfo a { color:#7fa1a9; text-decoration: underline;}
+.PostInfo a:visited { color:#7fa1a9; text-decoration: underline; }
+.PostInfo a:hover { color:#7fa1a9; text-decoration: underline; }
+
+.PostContent { padding: 10px 0px;}
+.PostContent h1 { font-size: 22px; letter-spacing: -1px; font-weight: normal; padding: 2px 0px; margin: 0px;}
+.PostContent h2 { font-size: 19px; letter-spacing: -1px; font-weight: normal; padding: 2px 0px; margin: 0px;}
+.PostContent h3 { font-size: 17px; font-weight: normal; padding: 2px 0px; margin: 0px;}
+.PostContent ul { font-size: 11px;}
+.PostContent ol { font-size: 11px;}
+.PostContent p { font-size: 11px; line-height: 16px; color: #9ec5c4; padding: 6px 0px; margin: 6px 0px;}
+.PostContent img { float: left; padding: 1px; border: solid 1px #f0f0f0; margin: 0px 15px 15px 0px;}
+.PostContent blockquote { padding: 5px 0px; margin: 5px 0px; color:#bee6e9;}
+.PostContent blockquote p { font-size: 10px; padding: 3px 0px; margin: 3px 0px; line-height: 12px; color: #bee6e9;}
+
+.PostDetails { padding: 10px 0px; margin: 0px; font-size: 10px;}
+.PostDetails a { text-decoration: underline;}
+.PostDetails a:visited { text-decoration: underline; }
+.PostDetails a:hover { text-decoration: underline; }
+
+.PostDetails .ReadOn { background: url(./images/PostDetailsReadIco.png) no-repeat left center; padding: 5px 0px 5px 15px;}
+.PostDetails .Subscribe { background: url(./images/PostDetailsRssIco.png) no-repeat left center; padding: 5px 0px 5px 15px; margin-left: 5px;}
+.PostDetails .NrComments { background: url(./images/PostDetailsCommentsIco.png) no-repeat left center; padding: 5px 0px 5px 15px; margin-left: 5px;}
+.PostDetails .AddOpinion { background: url(./images/PostDetailsOpinionIco.png) no-repeat left center; padding: 5px 0px 5px 15px; margin-left: 5px;}
+
+.PostDate { position: absolute; top: 0.5em; left: 0; text-align: center; margin: 0; padding: 0px 5px 5px 5px; list-style: none; background: url(./images/PostNrBkg.png) no-repeat left top; width: 32px; }
+.PostDate .month {display: block; font-size: 11px; letter-spacing: -1px; text-transform: lowercase;  line-height: 16px; color: #fff;}
+.PostDate .day { display: block; font-size: 16px; font-family: 'Arial'; font-weight: bold; line-height: 18px; color: #ffff99; padding-top: 4px; }
+
+
+
+
+
+/* Right Column */
+.SR { background: #195b73; float: left; width: 289px; margin-left: 21px;  border-left: solid 1px #367288; border-right: solid 1px #367288; border-bottom: solid 1px #367288; padding-top: 10px;}
+.SR h2 { font-family: 'Helvetica'; font-size: 18px; letter-spacing: -1px; font-weight: normal; color: #fff; padding: 15px 0px; margin: 0px; text-transform: uppercase; border-bottom: dashed 1px #619ab2; }
+
+
+/* +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ */
+
+
+.Comments { background:#5A7C88; padding: 20px 10px 0px 10px; margin: 30px 0px 30px 0px ;}
+.Comments .List h3 { background: url(./images/bkg_h3_PostComments.png) no-repeat left center; font-size: 14px; font-weight: normal; color:#d5f3ff; margin: 0px; padding: 0px 0px 0px 60px; }
+.Comments .List h3 strong { font-size: 22px; font-weight: normal; text-transform: uppercase; color:#ff9999; border-bottom: dashed 1px #87909e; display: block; padding-bottom: 2px; margin-bottom: 2px; }
+.Comments .List ol { padding: 10px 0px 0px 0px; margin: 0px;}
+.Comments .List li { position: relative; background: #195b73; padding: 10px; margin: 10px 0px; list-style-type: none;   color:#fff; font-size: 11px; border: dashed 1px #4a6a6a; position: relative;  }
+
+/* +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ */
+
+.Comments .List .ListNr { position: absolute; top: 15px; left: 12px; font-size: 22px; font-family: 'Arial'; line-height: 22px;}
+.Comments .List .ListDate { font-size: 10px; color:#29363a;}
+.Comments .List .ListDate a { color:#29363a; text-decoration: none;}
+.Comments .List .ListDate a:visited { text-decoration: underline;}
+.Comments .List .ListUser { margin: 0px 0px 0px 50px; padding: 0px; font-size: 11px; letter-spacing: -1px; }
+.Comments .List .ListUser a { color: #ff9999; }
+.Comments .List .ListUser a:visited { color: #ff9999; }
+.Comments .List .ListUser a:hover { color: #e1f15d; }
+.Comments .List .ListDate { color:#cac7b8; padding: 1px 0px; margin: 0px 0px 0px 50px;}
+.Comments .List .ListDate a { color: #a7bac5; text-decoration: underline;}
+.Comments .List .ListContent { margin-left: 50px; margin-right: 10px; color:#fff;}
+.Comments .List .ListContent a { color: #ff9999; }
+.Comments .List .ListContent a:visited { color: #ff9999; }
+.Comments .List .ListContent a:hover { color: #e1f15d; }
+
+/* +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ */
+
+.Comments .Form { background: #5A7C88; margin: 0px 0px 30px 0px; padding: 0px 0px 20px 0px; }
+.Comments .Form h3 { background: url(./images/bkg_h3_PostForm.png) no-repeat left center; font-size: 14px; font-weight: normal; color:#d5f3ff; margin: 0px; padding: 0px 0px 0px 60px; }
+.Comments .Form h3 strong { font-size: 22px; font-weight: normal; text-transform: uppercase; color:#ff9999; border-bottom: dashed 1px #87909e; display: block; padding-bottom: 2px; margin-bottom: 2px; }
+
+.Comments .Form form { padding: 0px; margin: 20px 0px 0px 60px;}
+.Comments .Form p { padding: 5px 0px; margin: 0px; font-size: 10px;}
+.Comments .Form p label { padding-bottom: 10px; display: block;}
+.Comments .Form p label small { font-size: 10px; color: #ff9999}
+
+.Comments .Form .Note {  margin: 5px 0px; width: 395px;}
+.Comments .Form .Note small { font-size: 10px;}
+.Comments .Form .TextField { background: #d5f3ff; border: solid 1px #fff; padding: 5px; color: #424e65; font-size: 12px;}
+.Comments .Form .TextArea { background: #d5f3ff; border: solid 1px #fff; padding: 5px; color: #424e65; font-size: 13px;}
+
+.Comments .Form input.SubmitComment { width: 150px; height: 26px; background: url(./images/SubmitComment.png) no-repeat;margin-top: 7px;}
+.Comments .Form input.SubmitComment:hover { background: url(./images/SubmitComment.png) no-repeat 0 -26px; }
+.Comments .Form input.SubmitCommentIE { width: 150px; height: 26px; background: url(./images/SubmitComment.png) no-repeat 0 -26px;margin-top: 7px; }
+.Comments .Form input.Subscribe { background: #eaf4ff; border: 1px #fff solid; font-weight: bold; padding: 2px 0px;}
+
+/* +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ */
+
+/***** Side Menu *****/
+
+.Categ { margin-bottom: 10px; padding: 0px 10px; width: 269px; float: left; }
+.Categ ul { font-size: 11px; list-style: none; border-top: 1px solid #276e88; padding: 1px 0px 0px 0px; margin: 0; line-height: 1; }
+.Categ li { margin: 0; padding: 0; background: none; min-height: 18px; width: 269px; display: block; border-bottom: 1px solid #276e88; position: relative; }
+.Categ li a { display: block; padding: 3px 0px 4px 20px; text-decoration: none; color: #a1e8ff; background: url(./images/CategoriesIco.png) no-repeat left top; border-bottom: 2px solid #619ab2f; }
+.Categ li a:hover { background: #276e88 url(./images/CategoriesIcoOn.png) no-repeat left top; text-decoration: none; color: #e1f15d;  }
+
+/***
+.Categ li.toggle { background: none; border-bottom: 1px solid #195b73; } 
+.Categ li.toggle a { width: 246px; display: block; border-bottom: 1px solid #276e88; text-decoration: none; color: #a1e8ff;}
+.Categ li.toggle a:hover { background: #276e88 url(./images/CategoriesIcoOn.png) no-repeat left top; border-bottom: 1px solid #276e88; text-decoration: none; color: #e1f15d; }
+.Categ li a.toggle { background: none; width: 29px; position: absolute; top: 0; right: 0; padding-left: 0; text-align: center; border-bottom: none; color:#5da7bf;} 
+***/
+
+* html .Categ li a { right: 0px; color:#5da7bf; }
+
+
+.Flickr { margin-bottom: 10px; padding: 0px 10px; width: 269px; float: left; }
+.Flickr h2 { margin-bottom: 10px; }
+.Flickr ul li em { display: none;}
+.Flickr ul { padding: 0px; margin: 0px;} 
+.Flickr ul li { margin: 0px; padding: 0px; list-style-type: none; display: inline;}
+.Flickr ul li a { margin: 0px 9px 0px 0px; padding: 0px;}
+.Flickr ul li a img { background:#000; padding: 2px; margin: 0px 0px 10px 0px; border: solid 1px #a1e8ff; width: 70px; height: 70px;}
+.Flickr ul li a:hover img { background:#000; padding: 2px; margin: 0px 0px 10px 0px; border: solid 1px #cc6666;}
+
+.Flinx { margin-bottom: 10px; padding: 0px 10px; width: 269px; float: left; }
+.Flinx h2 { margin-bottom: 10px; }
+.Flinx ul li em { display: none;}
+.Flinx ul { padding: 0px; margin: 0px;} 
+.Flinx ul li { margin: 0px; padding: 0px; list-style-type: none; display: inline;}
+.Flinx ul li a { margin: 0px 9px 0px 0px; padding: 0px;}
+.Flinx ul li a img { background:#000; padding: 2px; margin: 0px 0px 10px 0px; border: solid 1px #a1e8ff; }
+.Flinx ul li a:hover img { background:#000; padding: 2px; margin: 0px 0px 10px 0px; border: solid 1px #cc6666;}
+
+
+
+.Syndication { margin-bottom: 10px; padding: 0px 10px; width: 269px; float: left; }
+.Syndication em { display: none}
+.Syndication ul { padding: 10px 0px; margin: 0px; height: 16px;  }
+.Syndication li { float: left; padding: 0px; margin: 0px; display: inline; list-style-type: none;}
+.Syndication li a { DISPLAY: block; HEIGHT: 16px; width: 16px; margin-right: 10px }
+
+.Syndication li a.RSS{ background: url(./images/syndicate_ico_rss.png) no-repeat left top;}
+.Syndication li a.BlogMarks { background: url(./images/syndicate_ico_BlogMarks.png) no-repeat left top;}
+.Syndication li a.delicius { background: url(./images/syndicate_ico_delicius.png) no-repeat left top; }
+.Syndication li a.NewsWine { background: url(./images/syndicate_ico_NewsWine.png) no-repeat left top;}
+.Syndication li a.Simpy { background: url(./images/syndicate_ico_Simpy.png) no-repeat left top; }
+.Syndication li a.Spurl { background: url(./images/syndicate_ico_Spurl.png) no-repeat left top; }
+.Syndication li a.comments { background: url(./images/syndicate_ico_comments.png) no-repeat left top; }
+
+/* +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ */
+
+.Sponsors { margin-bottom: 12px; width: 289px; }
+
+
+/*\ IE/Win min height hack */ * html .FooterContain { height: 330px;} /* */ 
+.FooterContain { width: 100%; background: #001d29; clear: both; min-height: 330px; padding: 12px 0px 0px 0px; border-top: solid 1px #114f66;}
+
+
+.Footer { width: 900px; margin: 0 auto; color: #859494; clear: both;} 
+.Footer h2 {  font-family: 'Arial'; font-size: 14px; letter-spacing: -1px; font-weight: bold; color: #9ec5c4; padding: 10px 0px; margin: 0px; text-transform: uppercase; } 
+
+/*\ IE/Win min height hack */ * html .Footer ul { height: 100px;} /* */ 
+.Footer ul { min-height: 100px; padding: 0px; margin: 10px 0px; border-top: solid 1px #364f59;} 
+.Footer li { margin: 0px; padding-bottom: 6px; list-style-type: none; border-bottom: solid 1px #364f59;} 
+.Footer li small { font-size: 10px;} 
+
+.Footer li a { display: block; color: #bad022; padding: 6px 0px 0px 0px; font-size: 11px; }
+.Footer li a:visited { display: block; color: #bad022; padding: 6px 0px 0px 0px; font-size: 11px; }
+.Footer li a:hover {  display: block; color:#cc6666; padding: 6px 0px 0px 0px; font-size: 11px; }
+
+.FooterRecent { float: left; width: 290px; 
+    padding-right: 6px;
+}
+.FooterCommented { float: left; width: 290px; margin: 0px 14px; padding-right: 6px; }
+.FooterPartners {float: left; width: 290px; padding-right: 6px; }
+
+.FooterCopy { background: #445961; width: 900px; color: #fff; float: left; } 
+.FooterCopy p { padding: 10px; margin: 0px; font-size: 9px; color: #b2b2b2; } 
