@@ -9,5 +9,8 @@ import javax.swing.Icon;
 public interface ScriptItem {
     String getTitle();
     Icon getIcon();
-    
+    Object getData();
+    Class<? extends ScriptItemRenderer> getRenderer();
+    Class<? extends ScriptItemControl> getControl();
+    ScriptItemSource getSource();
 }

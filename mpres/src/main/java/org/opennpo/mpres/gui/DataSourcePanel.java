@@ -6,15 +6,35 @@
 
 package org.opennpo.mpres.gui;
 
+import java.util.List;
+import java.util.ServiceLoader;
+import java.util.ServiceLoader;
+import java.util.ServiceLoader;
+import java.util.Vector;
+import javax.swing.JScrollPane;
+import org.opennpo.mpres.ScriptItemSource;
+
 /**
  *
  * @author  nate
  */
 public class DataSourcePanel extends javax.swing.JPanel {
-    
+    private List<ScriptItemSource> sources;
     /** Creates new form DataSourcePanel */
     public DataSourcePanel() {
         initComponents();
+        sources = new Vector<ScriptItemSource>();
+        ServiceLoader<ScriptItemSource> loader = ServiceLoader.load(ScriptItemSource.class);
+        if(loader!=null){
+            for(ScriptItemSource src : loader){
+                addSource(src);
+            }
+        }
+    }
+    
+    public void addSource(ScriptItemSource src){
+        tabPane.addTab(src.getTitle(), src.getIcon(), new JScrollPane(src.getComponent()));
+        sources.add(src);
     }
     
     /** This method is called from within the constructor to
