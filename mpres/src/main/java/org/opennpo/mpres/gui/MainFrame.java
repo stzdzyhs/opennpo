@@ -6,13 +6,13 @@
 
 package org.opennpo.mpres.gui;
 
-import java.awt.MenuBar;
 import java.awt.event.ComponentAdapter;
 import java.awt.event.ComponentEvent;
-import java.awt.event.ComponentListener;
 import javax.swing.JMenu;
 import javax.swing.JMenuBar;
 import javax.swing.JSplitPane;
+import org.opennpo.conf.Configuration;
+import org.opennpo.mpres.Conf;
 
 /**
  * This is the main window for the MPres application.
@@ -61,7 +61,24 @@ public class MainFrame extends javax.swing.JFrame {
         mainSplitter.setLeftComponent(srcSplitter);
         getContentPane().add(mainSplitter);
         pack();
-        setSize(800,600);
+        Configuration conf = Conf.getConfig();
+        setSize(conf.get("MainFrame.width", 800),conf.get("MainFrame.height", 600));
+        this.addComponentListener(new ComponentAdapter(){
+            @Override
+            public void componentResized(ComponentEvent e){
+                saveLayout();
+            }
+            @Override
+            public void componentMoved(ComponentEvent e){
+                saveLayout();
+            }
+        });
+    }
+    
+    private void saveLayout(){
+        Configuration conf = Conf.getConfig();
+        conf.put("MainFrame.width", getWidth());
+        conf.put("MainFrame.height", getHeight());
     }
     
     
@@ -79,17 +96,6 @@ public class MainFrame extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-    
-    /**
-     * @param args the command line arguments
-     */
-    public static void main(String args[]) {
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new MainFrame().setVisible(true);
-            }
-        });
-    }
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
     // End of variables declaration//GEN-END:variables

@@ -33,7 +33,7 @@ public class DataSourcePanel extends javax.swing.JPanel {
     }
     
     public void addSource(ScriptItemSource src){
-        tabPane.addTab(src.getTitle(), src.getIcon(), new JScrollPane(src.getComponent()));
+        tabPane.addTab(src.getTitle(), src.getIcon(), src.getComponent());//new JScrollPane(src.getComponent()));
         sources.add(src);
     }
     

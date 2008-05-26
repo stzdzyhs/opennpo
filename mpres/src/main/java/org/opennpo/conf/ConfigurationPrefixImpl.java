@@ -1,8 +1,3 @@
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
-
 package org.opennpo.conf;
 
 import java.util.Collection;
@@ -17,7 +12,7 @@ import java.util.Vector;
  *
  * @author Nate Jones
  */
-public class ConfigurationPrefixImpl extends AbstractConfiguration{
+class ConfigurationPrefixImpl extends AbstractConfiguration{
     private Configuration root;
     private String prefix;
     

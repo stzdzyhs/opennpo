@@ -5,16 +5,13 @@
 
 package org.opennpo.mpres.sources;
 
+import java.awt.BorderLayout;
+import java.awt.event.ActionEvent;
 import org.opennpo.mpres.*;
 import java.awt.Component;
-import java.awt.Image;
-import java.awt.image.BufferedImage;
-import java.io.IOException;
-import java.util.logging.Level;
+import java.awt.event.ActionListener;
 import java.util.logging.Logger;
-import javax.imageio.ImageIO;
 import javax.swing.Icon;
-import javax.swing.ImageIcon;
 import javax.swing.JFileChooser;
 import javax.swing.JPanel;
 
@@ -30,10 +27,18 @@ public class FileScriptItemSource extends JPanel implements ScriptItemSource {
     private JFileChooser chooser;
     
     public FileScriptItemSource(){
+        this.setLayout(new BorderLayout());
         chooser = new JFileChooser();
         chooser.setControlButtonsAreShown(false);
         this.add(chooser);
         icon = Resources.getIcon("Folder.gif");
+        chooser.addActionListener(new ActionListener(){
+
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                log.info("Action '"+e+"' performed.");
+            }
+        });
     }
 
     @Override

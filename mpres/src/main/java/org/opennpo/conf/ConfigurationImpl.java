@@ -1,8 +1,3 @@
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
-
 package org.opennpo.conf;
 
 import java.util.Collection;
@@ -16,7 +11,7 @@ import java.util.Set;
  *
  * @author Nate Jones
  */
-public class ConfigurationImpl extends AbstractConfiguration{
+class ConfigurationImpl extends AbstractConfiguration{
     private Map<String, Object> map;
     ConfigurationImpl(){
         map = Collections.synchronizedMap(new HashMap<String, Object>());
