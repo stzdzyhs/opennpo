@@ -11,6 +11,6 @@ public interface ScriptItemSource {
     Icon getIcon();
     String getTitle();
     Component getComponent();
-    ScriptItem getScriptItem(Component comp);
-    boolean hasScriptItemAvailable(Component comp);
+    void addListener(ScriptItemListener l);
+    void removeListener(ScriptItemListener l);
 }

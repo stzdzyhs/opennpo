@@ -8,18 +8,26 @@ package org.opennpo.mpres.gui;
 
 import java.awt.event.ComponentAdapter;
 import java.awt.event.ComponentEvent;
+import javax.swing.JFrame;
 import javax.swing.JMenu;
 import javax.swing.JMenuBar;
 import javax.swing.JSplitPane;
 import org.opennpo.conf.Configuration;
-import org.opennpo.mpres.Conf;
+import org.opennpo.conf.ConfigurationManager;
 
 /**
  * This is the main window for the MPres application.
  * @author  Nate Jones
  */
 public class MainFrame extends javax.swing.JFrame {
+    private static final String WidthOp = "width";
+    private static final String HeightOp = "height";
+    private static final String XOp = "x";
+    private static final String YOp = "y";
+    private static final String MainSplitterDivOp = "mainSplitterDiv";
+    private static final String SrcSplitterDivOp = "srcSplitterDivOp";
     
+    private Configuration conf;
     private JMenuBar menuBar;
     private JSplitPane mainSplitter;
     private JSplitPane presSplitter;
@@ -34,6 +42,7 @@ public class MainFrame extends javax.swing.JFrame {
      */
     public MainFrame() {
         //initComponents();
+        conf = ConfigurationManager.getAppConfig().getClassSubset(MainFrame.class);
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("MPres");
         getContentPane().setLayout(new java.awt.GridLayout());
@@ -61,8 +70,11 @@ public class MainFrame extends javax.swing.JFrame {
         mainSplitter.setLeftComponent(srcSplitter);
         getContentPane().add(mainSplitter);
         pack();
-        Configuration conf = Conf.getConfig();
-        setSize(conf.get("MainFrame.width", 800),conf.get("MainFrame.height", 600));
+        setSize(conf.get(WidthOp, 800),conf.get(WidthOp, 600));
+        setLocation(conf.get(XOp, 0), conf.get(YOp, 0));
+        mainSplitter.setDividerLocation(conf.get(MainSplitterDivOp, 200));
+        srcSplitter.setDividerLocation(conf.get(SrcSplitterDivOp, 400));
+        
         this.addComponentListener(new ComponentAdapter(){
             @Override
             public void componentResized(ComponentEvent e){
@@ -76,9 +88,12 @@ public class MainFrame extends javax.swing.JFrame {
     }
     
     private void saveLayout(){
-        Configuration conf = Conf.getConfig();
-        conf.put("MainFrame.width", getWidth());
-        conf.put("MainFrame.height", getHeight());
+        conf.put(WidthOp, getWidth());
+        conf.put(HeightOp, getHeight());
+        conf.put(XOp, getX());
+        conf.put(YOp, getY());
+        conf.put(MainSplitterDivOp, mainSplitter.getDividerLocation());
+        conf.put(SrcSplitterDivOp, srcSplitter.getDividerLocation());
     }
     
     

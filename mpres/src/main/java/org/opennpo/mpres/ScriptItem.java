@@ -12,5 +12,4 @@ public interface ScriptItem {
     Object getData();
     Class<? extends ScriptItemRenderer> getRenderer();
     Class<? extends ScriptItemControl> getControl();
-    ScriptItemSource getSource();
 }

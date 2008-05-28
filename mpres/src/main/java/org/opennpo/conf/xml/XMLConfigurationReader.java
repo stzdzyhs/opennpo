@@ -29,11 +29,9 @@ public class XMLConfigurationReader extends XMLConstants implements Configuratio
             fac.setIgnoringComments(true);
             DocumentBuilder builder = fac.newDocumentBuilder();
             Document doc = builder.parse(input);
-            System.out.println(doc.getTextContent());
             doc.normalizeDocument();
             Element root = doc.getDocumentElement();
             NodeList entries = root.getChildNodes();
-            log.info(entries.getLength()+" entries found.");
             Set<Class> classes = new HashSet<Class>();
             Element ele;
             String att;
@@ -60,13 +58,14 @@ public class XMLConfigurationReader extends XMLConstants implements Configuratio
     private static void loadElement(Configuration conf, Element ele, Unmarshaller marsh){
         try{
             String key = ele.getAttributeNS(NS, KEY_ATT);
-            log.info("Reading Entry: "+key);
             String isNull = ele.getAttributeNS(NS, ISNULL_ATT);
+            String cname = ele.getAttributeNS(NS, CLASS_ATT);
+            log.config(String.format("Reading Entry{key='%1$s'; Class Name='%2$s' IsNull='%3$s'", key, cname, isNull));
             if("true".equalsIgnoreCase(isNull)){
                 conf.put(key, null);
             }
             else{
-                Class clazz = Class.forName(ele.getAttributeNS(NS, CLASS_ATT));
+                Class clazz = Class.forName(cname);
                 if(Number.class.isAssignableFrom(clazz)){
                     conf.put(key, parseNumber(clazz, ele.getTextContent()));
                 }
