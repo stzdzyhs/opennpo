@@ -1,6 +1,5 @@
 /*
  * DataSourcePanel.java
- *
  * Created on May 20, 2008, 3:05 AM
  */
 
@@ -8,19 +7,23 @@ package org.opennpo.mpres.gui;
 
 import java.util.List;
 import java.util.ServiceLoader;
-import java.util.ServiceLoader;
-import java.util.ServiceLoader;
 import java.util.Vector;
-import javax.swing.JScrollPane;
 import org.opennpo.mpres.ScriptItemSource;
 
 /**
- *
- * @author  nate
+ * Control that displays the available ScriptItemSource's in a tab view.  
+ * It uses java.util.ServiceLoader to discover those services that provide 
+ * ScriptItemSource.  So any class that is registered to provide that interface 
+ * will automatically get added to this panel.
+ * @author  Nate Jones
+ * @see java.util.ServiceLoader
+ * @see org.opennpo.mpres.ScriptItemSource
  */
 public class DataSourcePanel extends javax.swing.JPanel {
     private List<ScriptItemSource> sources;
-    /** Creates new form DataSourcePanel */
+    /** 
+     * Creates new form DataSourcePanel 
+     */
     public DataSourcePanel() {
         initComponents();
         sources = new Vector<ScriptItemSource>();
@@ -32,8 +35,12 @@ public class DataSourcePanel extends javax.swing.JPanel {
         }
     }
     
+    /**
+     * Adds a new ScriptItemSource to the user interface.
+     * @param src
+     */
     public void addSource(ScriptItemSource src){
-        tabPane.addTab(src.getTitle(), src.getIcon(), src.getComponent());//new JScrollPane(src.getComponent()));
+        tabPane.addTab(src.getTitle(), src.getIcon(), src.getComponent());
         sources.add(src);
     }
     
@@ -51,9 +58,7 @@ public class DataSourcePanel extends javax.swing.JPanel {
         add(tabPane);
     }// </editor-fold>//GEN-END:initComponents
     
-    
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTabbedPane tabPane;
     // End of variables declaration//GEN-END:variables
-    
 }

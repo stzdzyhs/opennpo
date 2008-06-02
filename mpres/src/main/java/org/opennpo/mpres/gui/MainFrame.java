@@ -19,30 +19,49 @@ import org.opennpo.conf.ConfigurationManager;
  * This is the main window for the MPres application.
  * @author  Nate Jones
  */
-public class MainFrame extends javax.swing.JFrame {
+public class MainFrame extends JFrame {
+    // <editor-fold defaultstate="collapsed" desc="Configuration Values">
     private static final String WidthOp = "width";
     private static final String HeightOp = "height";
     private static final String XOp = "x";
     private static final String YOp = "y";
     private static final String MainSplitterDivOp = "mainSplitterDiv";
     private static final String SrcSplitterDivOp = "srcSplitterDivOp";
+    //</editor-fold>
     
     private Configuration conf;
     private JMenuBar menuBar;
     private JSplitPane mainSplitter;
     private JSplitPane presSplitter;
-    private DetailPanel deckDetail;
-    private DetailPanel liveDetail;
+    private FramePanel deckDetail;
+    private FramePanel liveDetail;
     private JSplitPane srcSplitter;
-    private ScriptEditorPanel scriptEditorPanel;
+    private ScriptPanel scriptEditorPanel;
     private DataSourcePanel dataSourcePanel;
     
     /** 
      * Creates new form MainFrame 
      */
     public MainFrame() {
-        //initComponents();
         conf = ConfigurationManager.getAppConfig().getClassSubset(MainFrame.class);
+        initVisualComponents();
+        initDataFlow();
+    }
+    
+    private void saveLayout(){
+        conf.put(WidthOp, getWidth());
+        conf.put(HeightOp, getHeight());
+        conf.put(XOp, getX());
+        conf.put(YOp, getY());
+        conf.put(MainSplitterDivOp, mainSplitter.getDividerLocation());
+        conf.put(SrcSplitterDivOp, srcSplitter.getDividerLocation());
+    }
+    
+    private void initDataFlow(){
+        
+    }
+    
+    private void initVisualComponents(){
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("MPres");
         getContentPane().setLayout(new java.awt.GridLayout());
@@ -55,14 +74,14 @@ public class MainFrame extends javax.swing.JFrame {
         mainSplitter.setResizeWeight(0.5);
         presSplitter = new JSplitPane();
         presSplitter.setResizeWeight(0.5);
-        deckDetail = new DetailPanel();
-        liveDetail = new DetailPanel();
+        deckDetail = new FramePanel();
+        liveDetail = new FramePanel();
         presSplitter.setLeftComponent(deckDetail);
         presSplitter.setRightComponent(liveDetail);
         srcSplitter = new JSplitPane();
         srcSplitter.setResizeWeight(0.5);
         srcSplitter.setOrientation(JSplitPane.VERTICAL_SPLIT);
-        scriptEditorPanel = new ScriptEditorPanel();
+        scriptEditorPanel = new ScriptPanel();
         dataSourcePanel = new DataSourcePanel();
         srcSplitter.setTopComponent(scriptEditorPanel);
         srcSplitter.setBottomComponent(dataSourcePanel);
@@ -74,8 +93,7 @@ public class MainFrame extends javax.swing.JFrame {
         setLocation(conf.get(XOp, 0), conf.get(YOp, 0));
         mainSplitter.setDividerLocation(conf.get(MainSplitterDivOp, 200));
         srcSplitter.setDividerLocation(conf.get(SrcSplitterDivOp, 400));
-        
-        this.addComponentListener(new ComponentAdapter(){
+        addComponentListener(new ComponentAdapter(){
             @Override
             public void componentResized(ComponentEvent e){
                 saveLayout();
@@ -86,16 +104,6 @@ public class MainFrame extends javax.swing.JFrame {
             }
         });
     }
-    
-    private void saveLayout(){
-        conf.put(WidthOp, getWidth());
-        conf.put(HeightOp, getHeight());
-        conf.put(XOp, getX());
-        conf.put(YOp, getY());
-        conf.put(MainSplitterDivOp, mainSplitter.getDividerLocation());
-        conf.put(SrcSplitterDivOp, srcSplitter.getDividerLocation());
-    }
-    
     
     /** This method is called from within the constructor to
      * initialize the form.
@@ -114,5 +122,5 @@ public class MainFrame extends javax.swing.JFrame {
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
     // End of variables declaration//GEN-END:variables
-    
+
 }

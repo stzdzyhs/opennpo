@@ -96,4 +96,9 @@ public class FileScriptItemSource extends JPanel implements ScriptItemSource {
     public void removeListener(ScriptItemListener l) {
         siListeners.remove(l);
     }
+    
+    @Override
+    public void next(){
+        //Should go to the next file?  What would that mean?
+    }
 }

@@ -1,5 +1,5 @@
 /*
- * ScriptEditorPanel.java
+ * ScriptPanel.java
  *
  * Created on May 20, 2008, 3:07 AM
  */
@@ -10,19 +10,22 @@ import java.awt.Color;
 import java.awt.Component;
 import javax.swing.BorderFactory;
 import javax.swing.DefaultListModel;
+import javax.swing.Icon;
 import javax.swing.JLabel;
 import javax.swing.JList;
 import javax.swing.ListCellRenderer;
 import org.opennpo.mpres.ScriptItem;
+import org.opennpo.mpres.ScriptItemListener;
+import org.opennpo.mpres.ScriptItemSource;
 
 /**
- *
- * @author  nate
+ * The visual component for handling a script.
+ * @author  Nate Jones
  */
-public class ScriptEditorPanel extends javax.swing.JPanel {
+public class ScriptPanel extends javax.swing.JPanel implements ScriptItemSource{
     private DefaultListModel scriptItems;
-    /** Creates new form ScriptEditorPanel */
-    public ScriptEditorPanel() {
+    /** Creates new form ScriptPanel */
+    public ScriptPanel() {
         initComponents();
         scriptItems = new DefaultListModel();
         jList1.setModel(scriptItems);
@@ -90,5 +93,35 @@ public class ScriptEditorPanel extends javax.swing.JPanel {
     private javax.swing.JList jList1;
     private javax.swing.JScrollPane jScrollPane1;
     // End of variables declaration//GEN-END:variables
+
+    @Override
+    public Icon getIcon() {
+        return null;
+    }
+
+    @Override
+    public String getTitle() {
+        return "Script";
+    }
+
+    @Override
+    public Component getComponent() {
+        return this;
+    }
+
+    @Override
+    public void addListener(ScriptItemListener l) {
+        throw new UnsupportedOperationException("Not supported yet.");
+    }
+
+    @Override
+    public void removeListener(ScriptItemListener l) {
+        throw new UnsupportedOperationException("Not supported yet.");
+    }
+
+    @Override
+    public void next() {
+        
+    }
     
 }

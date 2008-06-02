@@ -1,5 +1,5 @@
 /*
- * DetailPanel.java
+ * FramePanel.java
  *
  * Created on May 20, 2008, 3:13 AM
  */
@@ -7,13 +7,13 @@
 package org.opennpo.mpres.gui;
 
 /**
- *
- * @author  nate
+ * The visual component for dealing with a particular frame.
+ * @author  Nate Jones
  */
-public class DetailPanel extends javax.swing.JPanel {
+public class FramePanel extends javax.swing.JPanel {
     
-    /** Creates new form DetailPanel */
-    public DetailPanel() {
+    /** Creates new form FramePanel */
+    public FramePanel() {
         initComponents();
     }
     

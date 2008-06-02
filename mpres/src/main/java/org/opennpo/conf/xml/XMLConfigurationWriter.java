@@ -24,7 +24,7 @@ public class XMLConfigurationWriter extends XMLConstants implements Configuratio
             XMLOutputFactory fac = XMLOutputFactory.newInstance();
             fac.setProperty(XMLOutputFactory.IS_REPAIRING_NAMESPACES, Boolean.TRUE);
             XMLStreamWriter writer = fac.createXMLStreamWriter(out);
-            System.out.println("Writer Implementation: "+writer.getClass());
+            //System.out.println("Writer Implementation: "+writer.getClass());
             writer.writeStartDocument();
             writer.writeStartElement(NS, ROOT_EL);
             writer.writeNamespace(PFX, NS);
