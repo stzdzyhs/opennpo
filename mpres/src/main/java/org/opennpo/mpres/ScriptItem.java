@@ -1,6 +1,7 @@
 package org.opennpo.mpres;
 
 import javax.swing.Icon;
+import javax.swing.Renderer;
 
 /**
  *
@@ -10,6 +11,6 @@ public interface ScriptItem {
     String getTitle();
     Icon getIcon();
     Object getData();
-    Class<? extends ScriptItemRenderer> getRenderer();
+    Class<? extends Renderer> getRenderer();
     Class<? extends ScriptItemControl> getControl();
 }

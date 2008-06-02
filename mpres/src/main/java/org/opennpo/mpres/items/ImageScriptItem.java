@@ -8,9 +8,9 @@ package org.opennpo.mpres.items;
 import java.awt.image.BufferedImage;
 import javax.swing.Icon;
 import javax.swing.ImageIcon;
+import javax.swing.Renderer;
 import org.opennpo.mpres.ScriptItem;
 import org.opennpo.mpres.ScriptItemControl;
-import org.opennpo.mpres.ScriptItemRenderer;
 
 /**
  *
@@ -44,7 +44,7 @@ public class ImageScriptItem implements ScriptItem{
     }
 
     @Override
-    public Class<? extends ScriptItemRenderer> getRenderer() {
+    public Class<? extends Renderer> getRenderer() {
         throw new UnsupportedOperationException("Not supported yet.");
     }
 
