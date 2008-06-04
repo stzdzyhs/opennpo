@@ -1,4 +1,4 @@
-package org.opennpo.mpres.factories;
+package org.opennpo.mpres.image;
 
 import java.awt.image.BufferedImage;
 import java.io.File;

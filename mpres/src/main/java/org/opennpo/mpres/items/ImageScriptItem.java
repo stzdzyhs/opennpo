@@ -9,14 +9,20 @@ import java.awt.image.BufferedImage;
 import javax.swing.Icon;
 import javax.swing.ImageIcon;
 import javax.swing.Renderer;
+import org.opennpo.beans.*;
 import org.opennpo.mpres.ScriptItem;
 import org.opennpo.mpres.ScriptItemControl;
+import org.opennpo.mpres.image.ImageRenderer;
 
 /**
  *
  * @author Nate Jones
  */
+@DisplayName("Image")
 public class ImageScriptItem implements ScriptItem{
+    static{
+        Utility.setupBeanInfo(ImageScriptItem.class);
+    }
     private BufferedImage data;
     private String title;
     private Icon icon;
@@ -45,7 +51,7 @@ public class ImageScriptItem implements ScriptItem{
 
     @Override
     public Class<? extends Renderer> getRenderer() {
-        throw new UnsupportedOperationException("Not supported yet.");
+        return ImageRenderer.class;
     }
 
     @Override
