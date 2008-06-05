@@ -3,7 +3,7 @@
  * and open the template in the editor.
  */
 
-package org.opennpo.mpres.items;
+package org.opennpo.mpres.image;
 
 import java.awt.image.BufferedImage;
 import javax.swing.Icon;
@@ -12,7 +12,6 @@ import javax.swing.Renderer;
 import org.opennpo.beans.*;
 import org.opennpo.mpres.ScriptItem;
 import org.opennpo.mpres.ScriptItemControl;
-import org.opennpo.mpres.image.ImageRenderer;
 
 /**
  *
@@ -56,6 +55,6 @@ public class ImageScriptItem implements ScriptItem{
 
     @Override
     public Class<? extends ScriptItemControl> getControl() {
-        throw new UnsupportedOperationException("Not supported yet.");
+        return ImageControl.class;
     }
 }
