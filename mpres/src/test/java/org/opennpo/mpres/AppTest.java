@@ -7,7 +7,7 @@ import java.beans.PropertyDescriptor;
 import junit.framework.Test;
 import junit.framework.TestCase;
 import junit.framework.TestSuite;
-import org.opennpo.mpres.items.ImageScriptItem;
+import org.opennpo.mpres.image.ImageScriptItem;
 
 /**
  * Unit test for simple App.

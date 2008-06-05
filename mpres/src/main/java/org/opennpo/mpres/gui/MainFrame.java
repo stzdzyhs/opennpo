@@ -58,7 +58,7 @@ public class MainFrame extends JFrame {
     }
     
     private void initDataFlow(){
-        
+        dataSourcePanel.addListener(deckDetail);
     }
     
     private void initVisualComponents(){

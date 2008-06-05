@@ -3,9 +3,10 @@ package org.opennpo.mpres.image;
 import java.awt.Component;
 import java.awt.Graphics;
 import java.awt.Image;
+import java.awt.event.ComponentAdapter;
+import java.awt.event.ComponentEvent;
 import javax.swing.JComponent;
 import javax.swing.Renderer;
-import org.opennpo.mpres.items.ImageScriptItem;
 
 /**
  * A renderer for drawing ImageScriptItems.
@@ -13,12 +14,49 @@ import org.opennpo.mpres.items.ImageScriptItem;
  */
 public class ImageRenderer extends JComponent implements Renderer{
     private ImageScriptItem item;
+    private Image img;
+    private int wscaled = 0;
+    private int hscaled = 0;
+    
+    public ImageRenderer(){
+        addComponentListener(new ComponentAdapter(){
+            public void componentResized(ComponentEvent e){
+                setScale();
+            }
+        });
+    }
     
     @Override
     public void setValue(Object aValue, boolean isSelected) {
         item = (ImageScriptItem)aValue;
+        if(item!=null){
+            img = (Image)item.getData();
+            setScale();
+        }
+        repaint();
     }
-
+    
+    private void setScale(){
+        if(img==null) return;
+        int w = img.getWidth(this);
+        int h = img.getHeight(this);
+        if((w>getWidth())||(h>getHeight())){
+            double r = (double)h/(double)w;
+            if((w-getWidth())>(h-getHeight())){
+                wscaled = getWidth();
+                hscaled = (int)(wscaled*r);
+            }
+            else{
+                hscaled = getHeight();
+                wscaled = (int)(hscaled/r);
+            }
+        }
+        else{
+            wscaled = w;
+            hscaled = h;
+        }
+    }
+    
     @Override
     public Component getComponent() {
         return this;
@@ -26,9 +64,8 @@ public class ImageRenderer extends JComponent implements Renderer{
     
     @Override
     public void paint(Graphics grp){
-        if(item!=null){
-            Image img = (Image)item.getData();
-            grp.drawImage(img, 0, 0, this);
+        if(img!=null){
+            grp.drawImage(img, 0, 0, wscaled, hscaled, this);
         }
     }
 }

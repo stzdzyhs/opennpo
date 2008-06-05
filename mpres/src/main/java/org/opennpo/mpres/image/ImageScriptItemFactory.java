@@ -10,13 +10,13 @@ import java.util.logging.Logger;
 import javax.imageio.ImageIO;
 import org.opennpo.mpres.FileScriptItemFactory;
 import org.opennpo.mpres.ScriptItem;
-import org.opennpo.mpres.items.ImageScriptItem;
 
 /**
  *
  * @author Nate Jones
  */
 public class ImageScriptItemFactory implements FileScriptItemFactory{
+    private Logger log = Logger.getLogger(ImageScriptItemFactory.class.getName());
     FileNameMap fmap;
     
     public ImageScriptItemFactory(){
@@ -35,8 +35,9 @@ public class ImageScriptItemFactory implements FileScriptItemFactory{
         try {
             BufferedImage img = ImageIO.read(f);
             itm = new ImageScriptItem(f.getName(), img);
+            log.info("ImageScriptItem created from "+f.getName());
         } catch (IOException ex) {
-            Logger.getLogger(ImageScriptItemFactory.class.getName()).log(Level.SEVERE, null, ex);
+            log.log(Level.SEVERE, null, ex);
         }
         return itm;
     }

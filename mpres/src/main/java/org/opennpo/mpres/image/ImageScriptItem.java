@@ -43,6 +43,7 @@ public class ImageScriptItem implements ScriptItem{
         return icon;
     }
 
+    @DisplayName("Image Data")
     @Override
     public Object getData() {
         return data;

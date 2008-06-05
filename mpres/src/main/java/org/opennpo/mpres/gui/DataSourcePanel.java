@@ -5,9 +5,14 @@
 
 package org.opennpo.mpres.gui;
 
+import java.awt.Component;
 import java.util.List;
 import java.util.ServiceLoader;
 import java.util.Vector;
+import javax.swing.Icon;
+import org.opennpo.mpres.ListenerList;
+import org.opennpo.mpres.ScriptItem;
+import org.opennpo.mpres.ScriptItemListener;
 import org.opennpo.mpres.ScriptItemSource;
 
 /**
@@ -19,12 +24,15 @@ import org.opennpo.mpres.ScriptItemSource;
  * @see java.util.ServiceLoader
  * @see org.opennpo.mpres.ScriptItemSource
  */
-public class DataSourcePanel extends javax.swing.JPanel {
+public class DataSourcePanel extends javax.swing.JPanel implements ScriptItemSource, ScriptItemListener{
     private List<ScriptItemSource> sources;
+    private ListenerList listeners;
+    
     /** 
      * Creates new form DataSourcePanel 
      */
     public DataSourcePanel() {
+        listeners = new ListenerList();
         initComponents();
         sources = new Vector<ScriptItemSource>();
         ServiceLoader<ScriptItemSource> loader = ServiceLoader.load(ScriptItemSource.class);
@@ -42,6 +50,7 @@ public class DataSourcePanel extends javax.swing.JPanel {
     public void addSource(ScriptItemSource src){
         tabPane.addTab(src.getTitle(), src.getIcon(), src.getComponent());
         sources.add(src);
+        src.addListener(this);
     }
     
     /** This method is called from within the constructor to
@@ -61,4 +70,39 @@ public class DataSourcePanel extends javax.swing.JPanel {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTabbedPane tabPane;
     // End of variables declaration//GEN-END:variables
+
+    @Override
+    public Icon getIcon() {
+        throw new UnsupportedOperationException("Not supported yet.");
+    }
+
+    @Override
+    public String getTitle() {
+        throw new UnsupportedOperationException("Not supported yet.");
+    }
+
+    @Override
+    public Component getComponent() {
+        throw new UnsupportedOperationException("Not supported yet.");
+    }
+
+    @Override
+    public void addListener(ScriptItemListener l) {
+        listeners.add(l);
+    }
+
+    @Override
+    public void removeListener(ScriptItemListener l) {
+        listeners.remove(l);
+    }
+
+    @Override
+    public void next() {
+        
+    }
+
+    @Override
+    public void itemSelected(ScriptItemSource src, ScriptItem item) {
+        listeners.fireItemSelected(src, item);
+    }
 }

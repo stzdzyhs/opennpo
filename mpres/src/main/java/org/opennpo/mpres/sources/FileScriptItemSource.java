@@ -19,20 +19,26 @@ import java.util.logging.Logger;
 import javax.swing.Icon;
 import javax.swing.JFileChooser;
 import javax.swing.JPanel;
+import org.opennpo.conf.Configuration;
+import org.opennpo.conf.ConfigurationManager;
 
 /**
  *
  * @author Nate Jones
  */
 public class FileScriptItemSource extends JPanel implements ScriptItemSource {
+    private static final String LAST_DIR = "lastDir";
+    
     private Logger log = Logger.getLogger(FileScriptItemSource.class.getName());
     
     private Icon icon;
     private JFileChooser chooser;
     private List<ScriptItemListener> siListeners;
     private List<FileScriptItemFactory> factories;
+    private Configuration conf;
     
     public FileScriptItemSource(){
+        conf = ConfigurationManager.getAppConfig().getClassSubset(FileScriptItemSource.class);
         siListeners = Collections.synchronizedList(new Vector<ScriptItemListener>());
         this.setLayout(new BorderLayout());
         factories = new Vector<FileScriptItemFactory>();
@@ -44,12 +50,19 @@ public class FileScriptItemSource extends JPanel implements ScriptItemSource {
         log.info(buf.toString());
         chooser = new JFileChooser();
         chooser.setControlButtonsAreShown(false);
+        File dir = new File(conf.get(LAST_DIR, System.getProperty("user.home")));
+        if(dir.exists()){
+            chooser.setCurrentDirectory(dir);
+        }
+        chooser.setCurrentDirectory(dir);
         this.add(chooser);
         icon = Resources.getIcon("Folder.gif");
         chooser.addActionListener(new ActionListener(){
             @Override
             public void actionPerformed(ActionEvent e) {
+                conf.put(LAST_DIR, chooser.getCurrentDirectory().getAbsolutePath());
                 File f = chooser.getSelectedFile();
+                log.info(f.getName()+" selected.");
                 FileScriptItemFactory fac = getFactory(f);
                 if(fac != null){
                     ScriptItem item = fac.getItem(f);
