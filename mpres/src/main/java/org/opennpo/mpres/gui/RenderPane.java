@@ -1,6 +1,5 @@
 package org.opennpo.mpres.gui;
 
-import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Component;
 import java.awt.event.ComponentAdapter;
@@ -27,10 +26,12 @@ public class RenderPane extends JPanel{
         setBackground(Color.BLACK);
         layers = new JLayeredPane();
         add(layers);
+        layers.setBackground(Color.BLACK);
         addComponentListener(new ComponentAdapter(){
             @Override
             public void componentResized(ComponentEvent e){
-                for(Component comp : getComponents()){
+                layers.setSize(getSize());
+                for(Component comp : layers.getComponents()){
                     comp.setSize(getSize());
                 }
             }
@@ -43,6 +44,7 @@ public class RenderPane extends JPanel{
             ret = new RenderLayer();
         }
         ret.setScriptItem(item);
+        ret.setBackground(getBackground());
         return ret;
     }
     
@@ -53,44 +55,8 @@ public class RenderPane extends JPanel{
     
     public void addLayer(ScriptItem item){
         RenderLayer layer = getAvailableLayer(item);
-        layers.add(layer);
-        //add(layer);
+        layers.add(layer, new Integer(layers.getComponentCount()+1));
         layer.setLocation(0,0);
         layer.setSize(getSize());
     }
-    /*
-    public void putLayer(int index, ScriptItem item){
-        RenderLayer layer = getAvailableLayer(item);
-        layers.setLayer(layer, index);
-    }
-    
-    public void removeLayer(int index){
-        RenderLayer layer = (RenderLayer)layers.getComponent(index);
-        layers.remove(layer);
-        cachedLayers.add(layer);
-    }
-    
-    public void clearLayers(){
-        for(Component comp : layers.getComponents()){
-            if(comp instanceof RenderLayer){
-                RenderLayer layer = (RenderLayer)comp;
-                layers.remove(comp);
-                releaseLayer(layer);
-            }
-        }
-    }
-    
-    public ScriptItem getItem(int index){
-        Component comp = layers.getComponent(index);
-        if(comp instanceof RenderLayer){
-            return ((RenderLayer)comp).getScriptItem();
-        }
-        else{
-            return null;
-        }
-    }
-    
-    public int getItemCount(){
-        return layers.getComponentCount();
-    }*/
 }

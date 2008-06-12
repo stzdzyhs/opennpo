@@ -58,4 +58,9 @@ public class ImageScriptItem implements ScriptItem{
     public Class<? extends ScriptItemControl> getControl() {
         return ImageControl.class;
     }
+    
+    @Override
+    public String toString(){
+        return getClass().getName()+"["+getTitle()+"]";
+    }
 }

@@ -47,16 +47,19 @@ public class RenderLayer extends JPanel{
             if(renderer == null){
                 try {
                     renderer = item.getRenderer().newInstance();
-                    renderer.setValue(item, true);
-                    child = renderer.getComponent();
-                    add(child);
-                    child.setSize(getSize());
                 } catch (InstantiationException ex) {
                     Logger.getLogger(RenderLayer.class.getName()).log(Level.SEVERE, null, ex);
+                    return;
                 } catch (IllegalAccessException ex) {
                     Logger.getLogger(RenderLayer.class.getName()).log(Level.SEVERE, null, ex);
+                    return;
                 }
             }
+            renderer.setValue(item, true);
+            child = renderer.getComponent();
+            child.setBackground(getBackground());
+            add(child);
+            child.setSize(getSize());
         }
         repaint();
     }

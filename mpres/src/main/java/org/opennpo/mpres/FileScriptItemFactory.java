@@ -1,17 +1,12 @@
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
-
 package org.opennpo.mpres;
 
-import java.io.File;
+import java.net.URL;
 
 /**
  *
- * @author nate
+ * @author Nate Jones
  */
 public interface FileScriptItemFactory {
-    boolean accept(File f);
-    ScriptItem getItem(File f);
+    boolean accept(URL f);
+    ScriptItem getItem(URL f);
 }

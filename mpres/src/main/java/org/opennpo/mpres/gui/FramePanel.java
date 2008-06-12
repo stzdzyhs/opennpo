@@ -80,7 +80,7 @@ public class FramePanel extends javax.swing.JPanel implements ScriptItemListener
 
     @Override
     public void itemSelected(ScriptItemSource src, ScriptItem item) {
-        log.info("Item Selected("+src.toString()+", "+item.toString()+")");
+        log.info("Item={"+item.toString()+"}\nSource={"+src.getTitle()+"}");
         if(EventQueue.isDispatchThread()){
             //renderPane.clear();
             renderPane.addLayer(item);

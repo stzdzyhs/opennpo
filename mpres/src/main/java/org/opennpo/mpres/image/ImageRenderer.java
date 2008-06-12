@@ -5,6 +5,7 @@ import java.awt.Graphics;
 import java.awt.Image;
 import java.awt.event.ComponentAdapter;
 import java.awt.event.ComponentEvent;
+import java.util.logging.Logger;
 import javax.swing.JComponent;
 import javax.swing.Renderer;
 
@@ -13,6 +14,7 @@ import javax.swing.Renderer;
  * @author Nate Jones
  */
 public class ImageRenderer extends JComponent implements Renderer{
+    private static final Logger log = Logger.getLogger(ImageRenderer.class.getName());
     private ImageScriptItem item;
     private Image img;
     private int wscaled = 0;
@@ -66,6 +68,9 @@ public class ImageRenderer extends JComponent implements Renderer{
     public void paint(Graphics grp){
         if(img!=null){
             grp.drawImage(img, 0, 0, wscaled, hscaled, this);
+        }
+        else{
+            log.info("Null Image!!");
         }
     }
 }

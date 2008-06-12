@@ -4,6 +4,7 @@ import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
 import java.net.FileNameMap;
+import java.net.URL;
 import java.net.URLConnection;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -24,18 +25,18 @@ public class ImageScriptItemFactory implements FileScriptItemFactory{
     }
 
     @Override
-    public boolean accept(File f) {
-        String type = fmap.getContentTypeFor(f.getName());
+    public boolean accept(URL f) {
+        String type = fmap.getContentTypeFor(f.getFile());
         return (type!=null)&&(type.startsWith("image/"));
     }
 
     @Override
-    public ScriptItem getItem(File f) {
+    public ScriptItem getItem(URL f) {
         ImageScriptItem itm = null;
         try {
             BufferedImage img = ImageIO.read(f);
-            itm = new ImageScriptItem(f.getName(), img);
-            log.info("ImageScriptItem created from "+f.getName());
+            itm = new ImageScriptItem(f.getFile(), img);
+            log.finest("ImageScriptItem created from "+f.getFile());
         } catch (IOException ex) {
             log.log(Level.SEVERE, null, ex);
         }

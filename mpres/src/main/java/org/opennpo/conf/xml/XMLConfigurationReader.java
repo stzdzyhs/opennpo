@@ -38,7 +38,6 @@ public class XMLConfigurationReader extends XMLConstants implements Configuratio
             for(int i = 0;i<entries.getLength();++i){
                 ele = (Element)entries.item(i);
                 att = ele.getAttributeNS(NS, CLASS_ATT);
-                System.out.println(att);
                 if(!isEmpty(att)){
                     classes.add(Class.forName(att));
                 }
@@ -60,7 +59,6 @@ public class XMLConfigurationReader extends XMLConstants implements Configuratio
             String key = ele.getAttributeNS(NS, KEY_ATT);
             String isNull = ele.getAttributeNS(NS, ISNULL_ATT);
             String cname = ele.getAttributeNS(NS, CLASS_ATT);
-            log.config(String.format("Reading Entry{key='%1$s'; Class Name='%2$s' IsNull='%3$s'", key, cname, isNull));
             if("true".equalsIgnoreCase(isNull)){
                 conf.put(key, null);
             }

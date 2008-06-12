@@ -21,7 +21,6 @@ import java.util.logging.Logger;
 public final class Utility {
     public static void setupBeanInfo(Class clazz){
         try {
-            System.out.println("hello setupBeanInfo");
             BeanInfo nfo = Introspector.getBeanInfo(clazz);
             processAnnotations(nfo.getBeanDescriptor(), clazz.getAnnotations());
             if(nfo.getPropertyDescriptors()!=null){

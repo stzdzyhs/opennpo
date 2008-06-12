@@ -13,6 +13,9 @@ import java.beans.IntrospectionException;
 import java.beans.Introspector;
 import java.beans.PropertyDescriptor;
 import java.lang.reflect.InvocationTargetException;
+import java.util.Collections;
+import java.util.List;
+import java.util.Vector;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JPanel;
@@ -53,14 +56,35 @@ public class PropertyGrid extends JPanel {
     public static class BeanTableModel implements TableModel{
         private BeanInfo info;
         private Object object;
+        private List<PropertyDescriptor> properties;
+        private boolean showExpert;
         
         public BeanTableModel(Object bean){
             try {
                 object = bean;
                 info = Introspector.getBeanInfo(bean.getClass());
+                properties = Collections.synchronizedList(new Vector<PropertyDescriptor>());
+                showExpert = false;
+                refreshProperties();
             } catch (IntrospectionException ex) {
                 Logger.getLogger(PropertyGrid.class.getName()).log(Level.SEVERE, null, ex);
             }
+        }
+        
+        public void refreshProperties(){
+            for(PropertyDescriptor prop : info.getPropertyDescriptors()){
+                if((!prop.isHidden())&&(!(showExpert&&prop.isExpert()))){
+                    properties.add(prop);
+                }
+            }
+        }
+        
+        public boolean isShowExpert(){
+            return showExpert;
+        }
+        
+        public void setShowExpert(boolean val){
+            showExpert = val;
         }
 
         @Override

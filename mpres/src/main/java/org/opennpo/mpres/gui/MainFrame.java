@@ -6,12 +6,16 @@
 
 package org.opennpo.mpres.gui;
 
+import java.awt.BorderLayout;
+import java.awt.EventQueue;
 import java.awt.event.ComponentAdapter;
 import java.awt.event.ComponentEvent;
 import javax.swing.JFrame;
+import javax.swing.JLabel;
 import javax.swing.JMenu;
 import javax.swing.JMenuBar;
 import javax.swing.JSplitPane;
+import org.opennpo.Runner;
 import org.opennpo.conf.Configuration;
 import org.opennpo.conf.ConfigurationManager;
 
@@ -38,6 +42,7 @@ public class MainFrame extends JFrame {
     private JSplitPane srcSplitter;
     private ScriptPanel scriptEditorPanel;
     private DataSourcePanel dataSourcePanel;
+    private JLabel statusLabel;
     
     /** 
      * Creates new form MainFrame 
@@ -64,7 +69,7 @@ public class MainFrame extends JFrame {
     private void initVisualComponents(){
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("MPres");
-        getContentPane().setLayout(new java.awt.GridLayout());
+        getContentPane().setLayout(new BorderLayout());
         menuBar = new JMenuBar();
         JMenu menu = null;
         menu = new JMenu("File");
@@ -87,7 +92,10 @@ public class MainFrame extends JFrame {
         srcSplitter.setBottomComponent(dataSourcePanel);
         mainSplitter.setRightComponent(presSplitter);
         mainSplitter.setLeftComponent(srcSplitter);
-        getContentPane().add(mainSplitter);
+        statusLabel = new JLabel("Welcome to MPres!!");
+        statusLabel.setHorizontalAlignment(JLabel.RIGHT);
+        getContentPane().add(mainSplitter, BorderLayout.CENTER);
+        getContentPane().add(statusLabel, BorderLayout.SOUTH);
         pack();
         setSize(conf.get(WidthOp, 800),conf.get(WidthOp, 600));
         setLocation(conf.get(XOp, 0), conf.get(YOp, 0));
@@ -103,6 +111,20 @@ public class MainFrame extends JFrame {
                 saveLayout();
             }
         });
+    }
+    
+    public void setStatus(String status){
+        if(EventQueue.isDispatchThread()){
+            statusLabel.setText(status);
+        }
+        else{
+            EventQueue.invokeLater(new Runner(status){
+                @Override
+                public void runImpl(Object[] args) {
+                    setStatus((String)args[0]);
+                }
+            });
+        }
     }
     
     /** This method is called from within the constructor to

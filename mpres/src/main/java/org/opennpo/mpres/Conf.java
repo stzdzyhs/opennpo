@@ -74,11 +74,12 @@ public final class Conf {
             log.info("Configuration File: "+f.getCanonicalPath());
             confWriter.write(ConfigurationManager.getAppConfig(), out);
             log.info("Done Writing Configuration.");
-        } catch (IOException ex) {
+        } catch (Exception ex) {
             Logger.getLogger(Conf.class.getName()).log(Level.SEVERE, null, ex);
         } finally {
             try {
-                out.close();
+                if(out!=null)
+                    out.close();
             } catch (IOException ex) {
                 Logger.getLogger(Conf.class.getName()).log(Level.SEVERE, null, ex);
             }

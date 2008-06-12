@@ -7,10 +7,13 @@ package org.opennpo.mpres.sources;
 
 import java.awt.BorderLayout;
 import java.awt.event.ActionEvent;
+import java.net.MalformedURLException;
+import java.util.logging.Level;
 import org.opennpo.mpres.*;
 import java.awt.Component;
 import java.awt.event.ActionListener;
 import java.io.File;
+import java.net.URL;
 import java.util.Collections;
 import java.util.List;
 import java.util.ServiceLoader;
@@ -60,24 +63,28 @@ public class FileScriptItemSource extends JPanel implements ScriptItemSource {
         chooser.addActionListener(new ActionListener(){
             @Override
             public void actionPerformed(ActionEvent e) {
-                conf.put(LAST_DIR, chooser.getCurrentDirectory().getAbsolutePath());
-                File f = chooser.getSelectedFile();
-                log.info(f.getName()+" selected.");
-                FileScriptItemFactory fac = getFactory(f);
-                if(fac != null){
-                    ScriptItem item = fac.getItem(f);
-                    for(ScriptItemListener l : siListeners){
-                        l.itemSelected(FileScriptItemSource.this, item);
+                try {
+                    conf.put(LAST_DIR, chooser.getCurrentDirectory().getAbsolutePath());
+                    File f = chooser.getSelectedFile();
+                    log.finest(f.getName() + " selected.");
+                    URL url = f.toURI().toURL();
+                    FileScriptItemFactory fac = getFactory(url);
+                    if (fac != null) {
+                        ScriptItem item = fac.getItem(url);
+                        for (ScriptItemListener l : siListeners) {
+                            l.itemSelected(FileScriptItemSource.this, item);
+                        }
+                    } else {
+                        log.fine("No Handler could be found for " + f);
                     }
-                }
-                else{
-                    log.fine("No Handler could be found for "+f);
+                } catch (MalformedURLException ex) {
+                    Logger.getLogger(FileScriptItemSource.class.getName()).log(Level.SEVERE, null, ex);
                 }
             }
         });
     }
     
-    protected FileScriptItemFactory getFactory(File f){
+    protected FileScriptItemFactory getFactory(URL f){
         for(FileScriptItemFactory fac : factories){
             if(fac.accept(f))
                 return fac;
