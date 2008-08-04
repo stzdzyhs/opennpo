@@ -119,10 +119,7 @@ public class MainFrame extends JFrame {
         }
         else{
             EventQueue.invokeLater(new Runner(status){
-                @Override
-                public void runImpl(Object[] args) {
-                    setStatus((String)args[0]);
-                }
+                @Override public void r(Object[] args) {setStatus((String)args[0]);}
             });
         }
     }

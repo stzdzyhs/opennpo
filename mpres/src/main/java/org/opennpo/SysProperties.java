@@ -2,7 +2,7 @@ package org.opennpo;
 
 /**
  * This is a convenience class for accessing the default System properties.
- * 
+ * <pre>
  * Default System Properties:
  * java.version  	Java Runtime Environment version
  * java.vendor          Java Runtime Environment vendor
@@ -32,6 +32,7 @@ package org.opennpo;
  * user.name 	User's account name
  * user.home 	User's home directory
  * user.dir 	User's current working directory
+ * </pre>
  * @author Nate Jones
  */
 public final class SysProperties {

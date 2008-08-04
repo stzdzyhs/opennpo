@@ -1,7 +1,6 @@
 package org.opennpo.mpres.image;
 
 import java.awt.image.BufferedImage;
-import java.io.File;
 import java.io.IOException;
 import java.net.FileNameMap;
 import java.net.URL;
@@ -21,6 +20,7 @@ public class ImageScriptItemFactory implements FileScriptItemFactory{
     FileNameMap fmap;
     
     public ImageScriptItemFactory(){
+        org.opennpo.beans.Utility.setupBeanInfo(ImageScriptItem.class);
         fmap = URLConnection.getFileNameMap();
     }
 
@@ -36,7 +36,7 @@ public class ImageScriptItemFactory implements FileScriptItemFactory{
         try {
             BufferedImage img = ImageIO.read(f);
             itm = new ImageScriptItem(f.getFile(), img);
-            log.finest("ImageScriptItem created from "+f.getFile());
+            log.info("Loaded: "+f);
         } catch (IOException ex) {
             log.log(Level.SEVERE, null, ex);
         }

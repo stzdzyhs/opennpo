@@ -60,7 +60,6 @@ public class App
             Logger plog = Logger.getLogger("org.opennpo");
             plog.setLevel(Level.ALL);
             plog.addHandler(new Handler() {
-
                 @Override
                 public void publish(LogRecord record) {
                     if ((record.getLevel() == Level.INFO) && (frame != null)) {
@@ -69,14 +68,8 @@ public class App
                         JOptionPane.showMessageDialog(frame, record, "Severe Error", JOptionPane.ERROR_MESSAGE);
                     }
                 }
-
-                @Override
-                public void flush() {
-                }
-
-                @Override
-                public void close() throws SecurityException {
-                }
+                @Override public void flush() {}
+                @Override public void close() throws SecurityException {}
             });
             FileHandler fhan = new FileHandler("%t/MPresLog%u_%g.xml", 0, 10);
             plog.addHandler(fhan);

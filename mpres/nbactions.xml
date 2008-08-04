@@ -10,7 +10,7 @@
                 <goal>org.codehaus.mevenide:netbeans-run-plugin:RELEASE:run-jar</goal>
             </goals>
             <properties>
-                <netbeans.jar.run.jvmparams>-Dcom.sun.star.lib.loader.unopath="C:\Program Files\OpenOffice.org 2.4\program"</netbeans.jar.run.jvmparams>
+                <netbeans.jar.run.jvmparams>-Xms512m -Xmx1024m</netbeans.jar.run.jvmparams>
             </properties>
         </action>
         <action>
@@ -24,7 +24,7 @@
             </goals>
             <properties>
                 <jpda.listen>true</jpda.listen>
-                <netbeans.jar.run.jvmparams>-Dcom.sun.star.lib.loader.unopath="C:\Program Files\OpenOffice.org 2.4\program"</netbeans.jar.run.jvmparams>
+                <netbeans.jar.run.jvmparams>-Xms512m -Xmx1024m</netbeans.jar.run.jvmparams>
                 <netbeans.jar.run.debugparams>-Xdebug -Djava.compiler=none -Xnoagent -Xrunjdwp:transport=dt_socket,server=n,address=${jpda.address}</netbeans.jar.run.debugparams>
             </properties>
         </action>

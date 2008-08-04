@@ -4,6 +4,7 @@ import java.beans.BeanInfo;
 import java.beans.IntrospectionException;
 import java.beans.Introspector;
 import java.beans.PropertyDescriptor;
+import java.beans.PropertyEditor;
 import junit.framework.Test;
 import junit.framework.TestCase;
 import junit.framework.TestSuite;
@@ -34,16 +35,14 @@ public class AppTest
     }
 
     /**
-     * Rigourous Test :-)
+     * Rigorous Test :-)
      */
     public void testApp() throws IntrospectionException
     {
-        BeanInfo nfo = Introspector.getBeanInfo(ImageScriptItem.class);
-        System.out.println(nfo.getBeanDescriptor().getDisplayName());
-        for(PropertyDescriptor prop: nfo.getPropertyDescriptors()){
-            System.out.println("\t"+prop.getDisplayName()+"("+prop.getName()+")");
+        PropertyEditor editor = new ImageScriptItem.StretchStylePropertyEditor();
+        for(String e : editor.getTags()){
+            System.out.println(e);
         }
-        
-        assertTrue( true );
+        assertTrue(editor!=null);
     }
 }

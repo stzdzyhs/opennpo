@@ -1,46 +1,34 @@
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
-
 package org.opennpo.mpres.gui;
 
 import java.awt.Component;
-import java.awt.event.ComponentAdapter;
-import java.awt.event.ComponentEvent;
+import java.awt.Dimension;
+import java.awt.Graphics;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import javax.swing.JPanel;
 import javax.swing.Renderer;
 import org.opennpo.mpres.ScriptItem;
 
 /**
- *
+ * 
  * @author Nate Jones
  */
-public class RenderLayer extends JPanel{
+public class RenderLayer extends Component{
     private ScriptItem item;
     private Map<Class, Renderer> renderers;
-    Component child;
+    private Component child;
+    private Dimension size;
+    
     public RenderLayer(){
         item = null;
         renderers = new HashMap<Class, Renderer>();
-        setLayout(null);
         child = null;
-        addComponentListener(new ComponentAdapter(){
-            @Override
-            public void componentResized(ComponentEvent e){
-                if(child!=null){
-                    child.setSize(getSize());
-                }
-            }
-        });
+        setIgnoreRepaint(false);
+        size = new Dimension();
     }
     
     public void setScriptItem(ScriptItem item){
-        this.removeAll();
         this.item = item;
         if(item!=null){
             Renderer renderer = renderers.get(item.getRenderer());
@@ -57,14 +45,30 @@ public class RenderLayer extends JPanel{
             }
             renderer.setValue(item, true);
             child = renderer.getComponent();
-            child.setBackground(getBackground());
-            add(child);
             child.setSize(getSize());
         }
-        repaint();
     }
     
     public ScriptItem getScriptItem(){
         return item;
+    }
+    
+    @Override
+    public void paint(Graphics grp){
+        if(child!=null){
+            child.paint(grp);
+        }
+    }
+    
+    @Override
+    public void setSize(Dimension d){
+        size = d;
+        if(child !=null)
+            child.setSize(d);
+    }
+    
+    @Override
+    public Dimension getSize(){
+        return size;
     }
 }

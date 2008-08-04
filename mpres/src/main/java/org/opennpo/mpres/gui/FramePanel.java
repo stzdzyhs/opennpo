@@ -6,7 +6,6 @@
 
 package org.opennpo.mpres.gui;
 
-import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Component;
 import java.awt.EventQueue;
@@ -80,9 +79,7 @@ public class FramePanel extends javax.swing.JPanel implements ScriptItemListener
 
     @Override
     public void itemSelected(ScriptItemSource src, ScriptItem item) {
-        log.info("Item={"+item.toString()+"}\nSource={"+src.getTitle()+"}");
         if(EventQueue.isDispatchThread()){
-            //renderPane.clear();
             renderPane.addLayer(item);
             controlPanel.removeAll();
             try {
@@ -101,10 +98,6 @@ public class FramePanel extends javax.swing.JPanel implements ScriptItemListener
             } catch (IllegalAccessException ex) {
                 Logger.getLogger(FramePanel.class.getName()).log(Level.SEVERE, null, ex);
             }
-            renderPane.invalidate();
-            controlPanel.invalidate();
-            renderPane.repaint();
-            controlPanel.repaint();
         }
         else{
             EventQueue.invokeLater(new Runner(src, item){

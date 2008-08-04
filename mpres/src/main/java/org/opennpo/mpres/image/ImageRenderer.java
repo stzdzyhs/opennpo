@@ -1,19 +1,19 @@
 package org.opennpo.mpres.image;
 
 import java.awt.Component;
+import java.awt.Dimension;
 import java.awt.Graphics;
 import java.awt.Image;
 import java.awt.event.ComponentAdapter;
 import java.awt.event.ComponentEvent;
 import java.util.logging.Logger;
-import javax.swing.JComponent;
 import javax.swing.Renderer;
 
 /**
  * A renderer for drawing ImageScriptItems.
  * @author Nate Jones
  */
-public class ImageRenderer extends JComponent implements Renderer{
+public class ImageRenderer extends Component implements Renderer{
     private static final Logger log = Logger.getLogger(ImageRenderer.class.getName());
     private ImageScriptItem item;
     private Image img;
@@ -21,11 +21,7 @@ public class ImageRenderer extends JComponent implements Renderer{
     private int hscaled = 0;
     
     public ImageRenderer(){
-        addComponentListener(new ComponentAdapter(){
-            public void componentResized(ComponentEvent e){
-                setScale();
-            }
-        });
+        
     }
     
     @Override
@@ -35,7 +31,6 @@ public class ImageRenderer extends JComponent implements Renderer{
             img = (Image)item.getData();
             setScale();
         }
-        repaint();
     }
     
     private void setScale(){
@@ -67,10 +62,16 @@ public class ImageRenderer extends JComponent implements Renderer{
     @Override
     public void paint(Graphics grp){
         if(img!=null){
-            grp.drawImage(img, 0, 0, wscaled, hscaled, this);
+            grp.drawImage(img, 0, 0, wscaled, hscaled, null);
         }
         else{
             log.info("Null Image!!");
         }
+    }
+    
+    @Override
+    public void setSize(Dimension d){
+        super.setSize(d);
+        setScale();
     }
 }
