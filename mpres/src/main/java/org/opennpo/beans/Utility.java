@@ -1,8 +1,3 @@
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
-
 package org.opennpo.beans;
 
 import java.beans.BeanDescriptor;
@@ -21,7 +16,9 @@ import java.util.logging.Logger;
  * @author Nate Jones
  */
 public final class Utility {
+    
     private static final Logger log = Logger.getLogger(Utility.class.getName());
+    
     public static void setupBeanInfo(Class clazz){
         log.fine("Setting up: "+clazz.getName());
         try {
@@ -42,6 +39,7 @@ public final class Utility {
             Logger.getLogger(Utility.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
+    
     private static void processAnnotations(FeatureDescriptor desc, Annotation[] anns){
         if((anns==null)||(desc==null)) return;
         for(Annotation ann : anns){

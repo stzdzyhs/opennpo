@@ -51,7 +51,7 @@
                                 <id>nb</id>
                                 <phase>package</phase>
                                 <goals>
-                                    <goal>directory</goal>
+                                    <goal>directory-single</goal>
                                 </goals>
                                 <configuration>
                                     <descriptor>${basedir}/src/main/assemblies/netbeans-run.xml</descriptor>
@@ -64,6 +64,7 @@
             </build>
         </profile>
     </profiles>
+  
   <dependencies>
         <dependency>
             <groupId>junit</groupId>
@@ -81,6 +82,12 @@
             <groupId>org.openoffice</groupId>
             <artifactId>unoil</artifactId>
             <version>2.4.0</version>
+            <scope>compile</scope>
+        </dependency>
+        <dependency>
+            <groupId>javax.media</groupId>
+            <artifactId>jmf</artifactId>
+            <version>2.1.1e</version>
             <scope>compile</scope>
         </dependency>
     </dependencies>
