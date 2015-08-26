@@ -1,0 +1,1 @@
+The goal of OpenNPO.org is to provide Non-Profit Organizations with Open Source Solutions tailored to the specific needs of NPOs.  This is accomplished in two ways.  One, by providing reference material on how existing Open Source Software can be leveraged in an NPO.  Secondly, by providing new Open Source software where there is not an adequate existing solution.
